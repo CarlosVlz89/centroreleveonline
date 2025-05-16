@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro Relevé Online - Prototipo</title>
+    <title>Centro Relevé Online - Prototipo Iteración 2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,9 +17,10 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc; /* Gris muy claro */
+            color: #374151; /* Gris oscuro para texto principal */
         }
         .hero-bg {
-            /* Imagen de fondo elegante y sutil relacionada con ballet o bienestar */
+            background-image: url('https://placehold.co/1920x800/CCFBF1/115E59?text=Bienestar+y+Danza+a+tu+Ritmo');
             background-size: cover;
             background-position: center;
         }
@@ -28,71 +29,63 @@
         }
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         .nav-link {
             position: relative;
             transition: color 0.3s ease;
-            padding-bottom: 6px; /* Espacio para la línea inferior */
+            padding-bottom: 6px;
         }
         .nav-link::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: 0; /* Alineado abajo del padding */
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             background-color: #0d9488; /* Teal-600 */
             transition: width 0.3s ease;
         }
         .nav-link:hover::after,
-        .nav-link.active-page::after { /* Mostrar línea en hover y activo */
+        .nav-link.active-page::after {
             width: 100%;
         }
         .nav-link:hover {
              color: #0d9488; /* Teal-600 */
         }
-        /* Estilo para la página activa (simulado) */
         .nav-link.active-page {
             color: #0d9488; /* Teal-600 */
             font-weight: 600;
         }
-        /* Asegurar que el contenido principal empuje el footer hacia abajo */
         body {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
         main {
-            flex-grow: 1; /* El contenido principal crece para ocupar espacio */
+            flex-grow: 1;
         }
-        .footer {
-             /* Se elimina height fija */
-        }
-        /* Clases - Filtros */
         .filter-button {
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
         .filter-button.active, .filter-button:hover {
             background-color: #0d9488; /* Teal-600 */
             color: white;
-            border-color: #0d9488; /* Asegurar borde del mismo color */
+            border-color: #0d9488;
         }
-        /* Animación sutil para tarjetas */
         .class-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .class-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); /* Sombra más suave */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
         }
-        /* Contenedor responsivo para iframe */
         .responsive-iframe-container {
             position: relative;
             overflow: hidden;
-            padding-top: 56.25%; /* Proporción 16:9 (divide 9 por 16 = 0.5625) */
-            border-radius: 0.5rem; /* Esquinas redondeadas */
+            padding-top: 56.25%;
+            border-radius: 0.5rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .responsive-iframe-container iframe {
@@ -103,7 +96,13 @@
             height: 100%;
             border: 0;
         }
-
+        .section-subtitle {
+            color: #0f766e; /* Teal-700 */
+            font-weight: 600;
+        }
+        .text-balance { /* Para mejorar el balance de texto en párrafos */
+            text-wrap: balance;
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -113,13 +112,14 @@
             <a href="#inicio" class="text-2xl font-bold text-teal-600">
                 Centro Relevé <span class="font-light">Online</span>
             </a>
-            <div class="hidden md:flex space-x-6 items-center" id="desktop-nav">
-                <a href="#inicio" class="nav-link">Inicio</a>
-                <a href="#como-funciona" class="nav-link">Cómo Funciona</a>
-                <a href="#clase-muestra" class="nav-link">Clase Muestra</a> <a href="#clases" class="nav-link">Clases</a>
+            <div class="hidden md:flex space-x-4 items-center" id="desktop-nav"> <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#flexibilidad" class="nav-link">Flexibilidad</a>
+                <a href="#clase-muestra" class="nav-link">Clase Muestra</a>
+                <a href="#clases" class="nav-link">Clases</a>
                 <a href="#profesores" class="nav-link">Profesores</a>
+                <a href="#bienestar" class="nav-link">Bienestar</a>
                 <a href="#comunidad" class="nav-link">Comunidad</a>
-                <a href="#precios" class="nav-link">Precios</a>
+                <a href="#precios" class="nav-link">Planes</a>
                 <a href="#login" class="ml-4 px-4 py-2 text-sm font-medium text-teal-600 border border-teal-600 rounded-full hover:bg-teal-600 hover:text-white transition duration-300">Iniciar Sesión</a>
                 <a href="#registro" class="ml-2 px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-full hover:bg-teal-700 transition duration-300 cta-button">Prueba Gratis</a>
             </div>
@@ -131,11 +131,13 @@
         </nav>
         <div id="mobile-menu" class="hidden md:hidden bg-white py-2 absolute w-full shadow-lg">
             <a href="#inicio" class="block px-6 py-2 text-gray-700 hover:bg-teal-50">Inicio</a>
-            <a href="#como-funciona" class="block px-6 py-2 text-gray-700 hover:bg-teal-50">Cómo Funciona</a>
-            <a href="#clase-muestra" class="block px-6 py-2 text-gray-700 hover:bg-teal-50">Clase Muestra</a> <a href="#clases" class="block px-6 py-2 text-gray-700 hover:bg-teal-50">Clases</a>
-            <a href="#profesores" class="block px-6 py-2 text-gray-700 hover:bg-teal-50">Profesores</a>
-            <a href="#comunidad" class="block px-6 py-2 text-gray-700 hover:bg-teal-50">Comunidad</a>
-            <a href="#precios" class="block px-6 py-2 text-gray-700 hover:bg-teal-50">Precios</a>
+            <a href="#flexibilidad" class="block px-6 py-2 text-gray-700 hover:bg-teal-50">Flexibilidad Total</a>
+            <a href="#clase-muestra" class="block px-6 py-2 text-gray-700 hover:bg-teal-50">Clase Muestra</a>
+            <a href="#clases" class="block px-6 py-2 text-gray-700 hover:bg-teal-50">Nuestras Clases</a>
+            <a href="#profesores" class="block px-6 py-2 text-gray-700 hover:bg-teal-50">Profesores Expertos</a>
+            <a href="#bienestar" class="block px-6 py-2 text-gray-700 hover:bg-teal-50">Bienestar Integral</a>
+            <a href="#comunidad" class="block px-6 py-2 text-gray-700 hover:bg-teal-50">Comunidad Activa</a>
+            <a href="#precios" class="block px-6 py-2 text-gray-700 hover:bg-teal-50">Nuestros Planes</a>
             <a href="#login" class="block px-6 py-2 text-teal-600 hover:bg-teal-50">Iniciar Sesión</a>
             <a href="#registro" class="block text-center text-white bg-teal-600 mx-4 my-2 px-4 py-2 rounded-full hover:bg-teal-700 transition duration-300">Prueba Gratis</a>
         </div>
@@ -144,213 +146,328 @@
     <main>
 
         <section id="inicio" class="hero-bg text-white pt-32 pb-20 md:pt-48 md:pb-32">
-            <div class="container mx-auto px-6 text-center bg-black bg-opacity-50 py-10 rounded-lg">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">Ballet para Adultos Online</h1>
-                <p class="text-lg md:text-2xl mb-8 text-teal-100">Encuentra flexibilidad, bienestar y una comunidad apasionada, sin importar tu nivel.</p>
+            <div class="container mx-auto px-6 text-center bg-black bg-opacity-60 py-10 rounded-lg">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">Danza Clásica para Adultos: <span class="block">Bienestar y Flexibilidad a Tu Ritmo</span></h1>
+                <p class="text-lg md:text-2xl mb-6 text-teal-100 text-balance">Descubre el placer de la danza con clases diseñadas para ti. Accede a contenido pregrabado cuando quieras o únete a sesiones en vivo. ¡Tu desarrollo personal y conexión con la danza comienzan aquí!</p>
+                <div class="mb-8">
+                    <span class="inline-block bg-teal-500 text-white text-sm font-semibold px-3 py-1 rounded-full mr-2"><i class="fas fa-video mr-1"></i> Clases Pregrabadas 24/7</span>
+                    <span class="inline-block bg-red-500 text-white text-sm font-semibold px-3 py-1 rounded-full"><i class="fas fa-broadcast-tower mr-1"></i> Sesiones en Vivo</span>
+                </div>
                 <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
                     <a href="#clases" class="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-8 rounded-full text-lg cta-button w-full sm:w-auto">
-                        Explora Nuestras Clases
+                        Explora las Clases
                     </a>
-                    <a href="#registro" class="bg-white hover:bg-gray-100 text-teal-600 font-semibold py-3 px-8 rounded-full text-lg cta-button w-full sm:w-auto">
-                        Comienza tu Prueba Gratis
+                    <a href="#clase-muestra" class="bg-white hover:bg-gray-100 text-teal-600 font-semibold py-3 px-8 rounded-full text-lg cta-button w-full sm:w-auto">
+                        Ver Clase Muestra
                     </a>
                 </div>
             </div>
         </section>
 
-        <section id="como-funciona" class="py-16 bg-white">
+        <section id="flexibilidad" class="py-16 bg-white">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold mb-2 text-teal-800">Danza a Tu Ritmo, Desde Casa</h2>
-                <p class="text-gray-600 mb-12 max-w-2xl mx-auto">Accede a clases de ballet y acondicionamiento físico diseñadas para adultos, con horarios flexibles y profesores expertos.</p>
-                <div class="grid md:grid-cols-3 gap-10">
-                    <div class="text-center p-6 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition duration-300">
-                        <div class="mb-4 text-teal-500">
-                            <i class="fas fa-mouse-pointer text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">1. Elige tu Clase</h3>
-                        <p class="text-gray-600">Explora nuestro catálogo por nivel, horario (en vivo o grabadas) y tipo de clase.</p>
+                <h2 class="text-3xl font-bold mb-4 text-teal-800">Danza Adaptada a Tu Vida</h2>
+                <p class="text-gray-700 mb-10 max-w-2xl mx-auto text-balance">Entendemos tus compromisos. Por eso, Relevé Online te ofrece la máxima flexibilidad para que disfrutes de la danza sin presiones, cuándo y dónde quieras.</p>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="text-left p-6 bg-teal-50 rounded-lg shadow">
+                        <h3 class="text-2xl font-semibold mb-3 text-teal-700"><i class="far fa-clock mr-2"></i> A Tu Propio Ritmo</h3>
+                        <p class="text-gray-600 mb-3 text-balance">Accede a nuestra extensa videoteca de clases pregrabadas en cualquier momento. Pausa, retrocede y repite las veces que necesites. Perfecto para agendas ocupadas y para aprender a tu velocidad.</p>
+                        <span class="inline-block bg-teal-600 text-white text-xs font-semibold px-2 py-1 rounded-full">Ideal para horarios variables</span>
                     </div>
-                    <div class="text-center p-6 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition duration-300">
-                        <div class="mb-4 text-teal-500">
-                            <i class="fas fa-calendar-alt text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">2. Reserva o Accede</h3>
-                        <p class="text-gray-600">Inscríbete a clases en vivo o accede instantáneamente a nuestra videoteca.</p>
-                    </div>
-                    <div class="text-center p-6 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition duration-300">
-                        <div class="mb-4 text-teal-500">
-                            <i class="fas fa-heartbeat text-4xl"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">3. ¡Disfruta y Conecta!</h3>
-                        <p class="text-gray-600">Participa en la clase, mejora tu bienestar y conecta con otros apasionados en la comunidad.</p>
+                    <div class="text-left p-6 bg-teal-50 rounded-lg shadow">
+                        <h3 class="text-2xl font-semibold mb-3 text-teal-700"><i class="fas fa-users mr-2"></i> Conexión en Vivo</h3>
+                        <p class="text-gray-600 mb-3 text-balance">Si prefieres la energía del grupo y la interacción directa, únete a nuestras clases en vivo programadas. Conecta con profesores y compañeros en tiempo real.</p>
+                        <span class="inline-block bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full">Para interacción directa</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="clase-muestra" class="py-16 bg-teal-50"> <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold mb-4 text-teal-800">Prueba una Clase</h2>
-                <p class="text-gray-600 mb-10 max-w-2xl mx-auto">¿Tienes curiosidad? Mira una muestra de nuestras clases de Introducción al Ballet y siente la experiencia Relevé Online.</p>
-
+        <section id="clase-muestra" class="py-16 bg-gray-50"> <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4 text-teal-800">Siente la Experiencia Relevé</h2>
+                <p class="text-gray-700 mb-10 max-w-2xl mx-auto text-balance">Descubre nuestro enfoque y la calidad de nuestras clases con esta muestra gratuita. ¡Imagina lo que puedes lograr!</p>
                 <div class="responsive-iframe-container max-w-3xl mx-auto mb-10">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/FrISNpG0bZk?si=BLUyXEmBOtyjWasf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                      
-                  </iframe>
-                    </div>
-
-                <a href="#clases" class="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-8 rounded-full text-lg cta-button">
-                    Explorar Todas las Clases
+                    <iframe
+                        src="https://www.youtube.com/embed/FrISNpG0bZk?si=BLUyXEmBOtyjWasf" title="Clase Muestra de Ballet - Centro Relevé Online"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <a href="#registro" class="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-8 rounded-full text-lg cta-button">
+                    Comenzar Prueba Gratuita
                 </a>
             </div>
         </section>
 
-        <section id="clases" class="py-16 bg-white"> <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 text-teal-800">Nuestras Clases</h2>
+        <section id="clases" class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4 text-teal-800">Explora Nuestras Clases</h2>
+                <p class="text-gray-700 text-center mb-2 max-w-2xl mx-auto text-balance">Filtra fácilmente entre clases <strong class="text-red-600">en vivo</strong> para interactuar o clases <strong class="text-teal-600">grabadas</strong> para tu comodidad.</p>
+                <p class="text-gray-500 text-center text-sm mb-10">Cada clase describe su nivel y enfoque, ¡encuentra la perfecta para ti!</p>
 
                 <div class="flex flex-wrap justify-center gap-2 mb-10">
                     <button class="filter-button px-4 py-2 border border-teal-600 text-teal-600 rounded-full text-sm" data-filter="all">Todas</button>
                     <button class="filter-button px-4 py-2 border border-teal-600 text-teal-600 rounded-full text-sm" data-filter="principiante">Principiante</button>
                     <button class="filter-button px-4 py-2 border border-teal-600 text-teal-600 rounded-full text-sm" data-filter="intermedio">Intermedio</button>
                     <button class="filter-button px-4 py-2 border border-teal-600 text-teal-600 rounded-full text-sm" data-filter="avanzado">Avanzado</button>
-                    <button class="filter-button px-4 py-2 border border-teal-600 text-teal-600 rounded-full text-sm" data-filter="vivo">En Vivo</button>
-                    <button class="filter-button px-4 py-2 border border-teal-600 text-teal-600 rounded-full text-sm" data-filter="grabada">Grabada</button>
+                    <button class="filter-button px-4 py-2 border border-red-600 text-red-600 rounded-full text-sm hover:bg-red-600 hover:text-white" data-filter="vivo"><i class="fas fa-broadcast-tower mr-1"></i> En Vivo</button>
+                    <button class="filter-button px-4 py-2 border border-teal-600 text-teal-600 rounded-full text-sm hover:bg-teal-600 hover:text-white" data-filter="grabada"><i class="fas fa-video mr-1"></i> Grabada</button>
                 </div>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="class-card bg-white rounded-lg shadow-lg overflow-hidden flex flex-col border border-gray-100" data-category="principiante grabada"> <img src="https://placehold.co/600x400/99F6E4/115E59?text=Ballet+Basico" alt="[Imagen de clase de ballet básico]" class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/EEE/AAA?text=Imagen+no+disponible';">
+                    <div class="class-card bg-white rounded-lg shadow-lg overflow-hidden flex flex-col border border-gray-100" data-category="principiante grabada">
+                        <img src="https://placehold.co/600x400/99F6E4/115E59?text=Ballet+Basico" alt="[Clase de Introducción al Ballet Clásico]" class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/EEE/AAA?text=Imagen+no+disponible';">
                         <div class="p-6 flex flex-col flex-grow">
                             <div>
                                 <span class="inline-block bg-teal-100 text-teal-800 text-xs font-semibold px-2 py-1 rounded-full mb-2">Principiante</span>
-                                <span class="inline-block bg-gray-100 text-gray-800 text-xs font-semibold px-2 py-1 rounded-full mb-2 ml-1">Grabada</span>
+                                <span class="inline-block bg-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded-full mb-2 ml-1"><i class="fas fa-video mr-1"></i> Grabada</span>
                             </div>
                             <h3 class="text-xl font-semibold mb-2 text-teal-900">Introducción al Ballet Clásico</h3>
-                            <p class="text-gray-600 text-sm mb-4 flex-grow">Aprende las posiciones y movimientos fundamentales. Ideal para empezar desde cero.</p>
+                            <p class="text-gray-600 text-sm mb-2 text-balance">Aprende las bases fundamentales a tu propio ritmo. Ideal para reconectar con la danza o iniciar tu camino.</p>
+                            <p class="text-xs text-gray-500 mb-4">Flexibilidad total para tu agenda.</p>
                             <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
                                 <span class="text-sm text-gray-500"><i class="far fa-clock mr-1"></i> 60 min</span>
-                                <a href="#clase-detalle-1" class="text-teal-600 hover:text-teal-800 font-semibold text-sm">Ver Detalles <i class="fas fa-arrow-right ml-1"></i></a>
+                                <a href="#clase-detalle-1" class="text-teal-600 hover:text-teal-800 font-semibold text-sm">Más Detalles <i class="fas fa-arrow-right ml-1"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="class-card bg-white rounded-lg shadow-lg overflow-hidden flex flex-col border border-gray-100" data-category="intermedio vivo"> <img src="https://placehold.co/600x400/5EEAD4/115E59?text=Barra+Adultos" alt="[Imagen de clase de barra para adultos]" class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/EEE/AAA?text=Imagen+no+disponible';">
+                    <div class="class-card bg-white rounded-lg shadow-lg overflow-hidden flex flex-col border border-gray-100" data-category="intermedio vivo">
+                         <img src="https://placehold.co/600x400/5EEAD4/115E59?text=Barra+Adultos" alt="[Clase de Técnica de Barra Intermedia]" class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/EEE/AAA?text=Imagen+no+disponible';">
                         <div class="p-6 flex flex-col flex-grow">
                            <div>
                                <span class="inline-block bg-teal-100 text-teal-800 text-xs font-semibold px-2 py-1 rounded-full mb-2">Intermedio</span>
-                               <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold px-2 py-1 rounded-full mb-2 ml-1">En Vivo</span>
+                               <span class="inline-block bg-red-100 text-red-800 text-xs font-semibold px-2 py-1 rounded-full mb-2 ml-1"><i class="fas fa-broadcast-tower mr-1"></i> En Vivo</span>
                            </div>
                             <h3 class="text-xl font-semibold mb-2 text-teal-900">Técnica de Barra Intermedia</h3>
-                            <p class="text-gray-600 text-sm mb-4 flex-grow">Perfecciona tu técnica en la barra con ejercicios más complejos. ¡Clase interactiva!</p>
+                            <p class="text-gray-600 text-sm mb-2 text-balance">Perfecciona tu técnica y fluidez con la guía experta de nuestros profesores en una sesión interactiva.</p>
+                            <p class="text-xs text-red-500 mb-4">Próxima sesión: Martes 18:00 (Hora Zapopan)</p>
                              <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
                                 <span class="text-sm text-gray-500"><i class="far fa-clock mr-1"></i> 75 min</span>
-                                <a href="#clase-detalle-2" class="text-teal-600 hover:text-teal-800 font-semibold text-sm">Ver Detalles <i class="fas fa-arrow-right ml-1"></i></a>
+                                <a href="#clase-detalle-2" class="text-teal-600 hover:text-teal-800 font-semibold text-sm">Más Detalles <i class="fas fa-arrow-right ml-1"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="class-card bg-white rounded-lg shadow-lg overflow-hidden flex flex-col border border-gray-100" data-category="todos grabada"> <img src="https://placehold.co/600x400/2DD4BF/115E59?text=Acondicionamiento" alt="[Imagen de clase de acondicionamiento físico]" class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/EEE/AAA?text=Imagen+no+disponible';">
+                    <div class="class-card bg-white rounded-lg shadow-lg overflow-hidden flex flex-col border border-gray-100" data-category="todos grabada">
+                        <img src="https://placehold.co/600x400/2DD4BF/115E59?text=Acondicionamiento" alt="[Clase de Acondicionamiento para Bailarines]" class="w-full h-48 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/EEE/AAA?text=Imagen+no+disponible';">
                         <div class="p-6 flex flex-col flex-grow">
                            <div>
-                               <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded-full mb-2">Todos los niveles</span>
-                               <span class="inline-block bg-gray-100 text-gray-800 text-xs font-semibold px-2 py-1 rounded-full mb-2 ml-1">Grabada</span>
+                               <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded-full mb-2">Todos los Niveles</span>
+                               <span class="inline-block bg-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded-full mb-2 ml-1"><i class="fas fa-video mr-1"></i> Grabada</span>
                            </div>
-                            <h3 class="text-xl font-semibold mb-2 text-teal-900">Acondicionamiento para Bailarines</h3>
-                            <p class="text-gray-600 text-sm mb-4 flex-grow">Fortalece y flexibiliza tu cuerpo con ejercicios específicos para la danza.</p>
+                            <h3 class="text-xl font-semibold mb-2 text-teal-900">Acondicionamiento Consciente</h3>
+                            <p class="text-gray-600 text-sm mb-2 text-balance">Fortalece, flexibiliza y cuida tu cuerpo con ejercicios diseñados para complementar tu práctica de danza y mejorar tu bienestar general.</p>
                              <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
                                 <span class="text-sm text-gray-500"><i class="far fa-clock mr-1"></i> 45 min</span>
-                                <a href="#clase-detalle-3" class="text-teal-600 hover:text-teal-800 font-semibold text-sm">Ver Detalles <i class="fas fa-arrow-right ml-1"></i></a>
+                                <a href="#clase-detalle-3" class="text-teal-600 hover:text-teal-800 font-semibold text-sm">Más Detalles <i class="fas fa-arrow-right ml-1"></i></a>
                             </div>
                         </div>
                     </div>
-                     </div>
+                </div>
                  <div class="text-center mt-12">
                      <a href="#todas-las-clases" class="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-8 rounded-full text-lg cta-button">
-                        Ver Todas las Clases
+                        Ver Catálogo Completo
                     </a>
                  </div>
             </div>
         </section>
 
-         <section id="profesores" class="py-16 bg-teal-50"> <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold mb-12 text-teal-800">Conoce a Nuestros Profesores Expertos</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="text-center p-6">
-                        <img src="https://placehold.co/200x200/CCFBF1/115E59?text=Profe+1" alt="[Foto del Profesor 1]" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/200x200/EEE/AAA?text=Foto';">
+        <section id="profesores" class="py-16 bg-teal-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4 text-teal-800">Guías Expertas en Tu Viaje con la Danza</h2>
+                <p class="text-gray-700 text-center mb-12 max-w-3xl mx-auto text-balance">Nuestro equipo de profesores no solo posee una técnica impecable, sino una pasión por enseñar a adultos, adaptando la pedagogía para un aprendizaje seguro, efectivo y disfrutable.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <img src="https://placehold.co/200x200/CCFBF1/115E59?text=Ana+L." alt="[Foto de la Profesora Ana López]" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-teal-200" onerror="this.onerror=null; this.src='https://placehold.co/200x200/EEE/AAA?text=Foto';">
                         <h3 class="text-xl font-semibold mb-1 text-teal-900">Ana López</h3>
-                        <p class="text-teal-600 text-sm mb-2">Especialista en Ballet para Principiantes</p>
-                        <p class="text-gray-600 text-sm">"Mi pasión es guiar a los adultos en sus primeros pasos en la danza, creando un ambiente de apoyo y disfrute."</p>
+                        <p class="text-teal-600 text-sm mb-2 font-semibold">Especialista en Iniciación y Técnica para Adultos</p>
+                        <p class="text-gray-600 text-sm mb-3 text-balance">"Mi enfoque es crear un espacio de confianza donde cada adulto redescubra su cuerpo y la alegría del movimiento. Paciencia, claridad y adaptación son claves en mis clases."</p>
+                        <span class="inline-block bg-teal-500 text-white text-xs font-semibold px-2 py-1 rounded-full"><i class="fas fa-user-friends mr-1"></i> Pedagogía Adultos</span>
                     </div>
-                     <div class="text-center p-6">
-                        <img src="https://placehold.co/200x200/99F6E4/115E59?text=Profe+2" alt="[Foto del Profesor 2]" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/200x200/EEE/AAA?text=Foto';">
+                     <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <img src="https://placehold.co/200x200/99F6E4/115E59?text=Javier+M." alt="[Foto del Profesor Javier Morales]" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-teal-200" onerror="this.onerror=null; this.src='https://placehold.co/200x200/EEE/AAA?text=Foto';">
                         <h3 class="text-xl font-semibold mb-1 text-teal-900">Javier Morales</h3>
-                        <p class="text-teal-600 text-sm mb-2">Experto en Técnica y Acondicionamiento</p>
-                        <p class="text-gray-600 text-sm">"Ayudo a los bailarines a alcanzar su máximo potencial físico y técnico, adaptando los ejercicios a cada cuerpo."</p>
+                        <p class="text-teal-600 text-sm mb-2 font-semibold">Experto en Acondicionamiento y Prevención</p>
+                        <p class="text-gray-600 text-sm mb-3 text-balance">"Combino mi experiencia en danza y fisioterapia para ofrecer un acondicionamiento que respeta y potencia el cuerpo adulto, previniendo lesiones y mejorando el rendimiento."</p>
+                        <span class="inline-block bg-teal-500 text-white text-xs font-semibold px-2 py-1 rounded-full"><i class="fas fa-dumbbell mr-1"></i> Cuerpo Consciente</span>
                     </div>
-                     <div class="text-center p-6">
-                        <img src="https://placehold.co/200x200/5EEAD4/115E59?text=Profe+3" alt="[Foto del Profesor 3]" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/200x200/EEE/AAA?text=Foto';">
+                     <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <img src="https://placehold.co/200x200/5EEAD4/115E59?text=Elena+R." alt="[Foto de la Profesora Elena Ríos]" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-teal-200" onerror="this.onerror=null; this.src='https://placehold.co/200x200/EEE/AAA?text=Foto';">
                         <h3 class="text-xl font-semibold mb-1 text-teal-900">Elena Ríos</h3>
-                        <p class="text-teal-600 text-sm mb-2">Coreografía y Expresión Artística</p>
-                        <p class="text-gray-600 text-sm">"Exploramos juntos la belleza del movimiento y la expresión personal a través de la danza clásica."</p>
+                        <p class="text-teal-600 text-sm mb-2 font-semibold">Coreografía y Expresión Artística para Adultos</p>
+                        <p class="text-gray-600 text-sm mb-3 text-balance">"La danza es un lenguaje universal. Guiaré tu exploración creativa, ayudándote a conectar con tu expresividad y a disfrutar la creación coreográfica, sin importar tu nivel previo."</p>
+                         <span class="inline-block bg-teal-500 text-white text-xs font-semibold px-2 py-1 rounded-full"><i class="fas fa-palette mr-1"></i> Creatividad Adultos</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="comunidad" class="py-16 bg-white"> <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold mb-4 text-teal-800">Únete a Nuestra Vibrante Comunidad</h2>
-                 <p class="text-gray-600 mb-10 max-w-2xl mx-auto">Conecta con otros alumnos, comparte tu progreso, participa en eventos virtuales exclusivos y recibe apoyo constante.</p>
-                 <div class="relative max-w-4xl mx-auto">
-                     <img src="https://placehold.co/1000x500/CCFBF1/0D9488?text=Foro+y+Eventos+Virtuales" alt="[Imagen conceptual de la comunidad online]" class="rounded-lg shadow-xl w-full h-auto" onerror="this.onerror=null; this.src='https://placehold.co/1000x500/EEE/AAA?text=Comunidad+Online';">
-                     <div class="absolute inset-0 bg-black bg-opacity-30 rounded-lg flex items-center justify-center p-4">
-                         <span class="text-white text-xl md:text-2xl font-semibold text-center p-4 bg-teal-600 bg-opacity-70 rounded">Próximamente: Foro Interactivo y Eventos</span>
-                     </div>
-                 </div>
-                 <div class="mt-10">
-                     <a href="#registro" class="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-8 rounded-full text-lg cta-button">
-                        Forma Parte de Relevé Online
-                    </a>
-                 </div>
+        <section id="bienestar" class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4 text-teal-800">Más Allá de la Danza: Tu Bienestar Completo</h2>
+                <p class="text-gray-700 text-center mb-12 max-w-3xl mx-auto text-balance">Creemos en un enfoque holístico. Tu suscripción incluye acceso a contenido complementario creado por especialistas para potenciar tu salud y tu práctica de danza.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-teal-50 p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+                        <div class="text-3xl text-teal-600 mb-3"><i class="fas fa-apple-alt"></i></div>
+                        <h3 class="text-xl font-semibold mb-2 text-teal-900">Nutrición Consciente</h3>
+                        <p class="text-gray-600 text-sm text-balance">Consejos y guías para una alimentación que apoye tu energía y recuperación.</p>
+                    </div>
+                    <div class="bg-teal-50 p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+                        <div class="text-3xl text-teal-600 mb-3"><i class="fas fa-brain"></i></div>
+                        <h3 class="text-xl font-semibold mb-2 text-teal-900">Mente y Movimiento</h3>
+                        <p class="text-gray-600 text-sm text-balance">Recursos de mindfulness y psicología para mejorar tu enfoque y conexión cuerpo-mente.</p>
+                    </div>
+                    <div class="bg-teal-50 p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+                        <div class="text-3xl text-teal-600 mb-3"><i class="fas fa-running"></i></div> <h3 class="text-xl font-semibold mb-2 text-teal-900">Cuidado Corporal</h3>
+                        <p class="text-gray-600 text-sm text-balance">Guías de fisioterapia, anatomía básica y prevención de lesiones específicas para la danza.</p>
+                    </div>
+                    <div class="bg-teal-50 p-6 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+                        <div class="text-3xl text-teal-600 mb-3"><i class="fas fa-book-open"></i></div>
+                        <h3 class="text-xl font-semibold mb-2 text-teal-900">Glosario de Ballet</h3>
+                        <p class="text-gray-600 text-sm text-balance">Entiende los términos clave de la danza clásica y enriquece tu aprendizaje.</p>
+                        <a href="#glosario" class="text-teal-600 hover:text-teal-800 text-xs font-semibold mt-2 inline-block">Acceder al Glosario <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
             </div>
         </section>
 
-         <section id="testimonios" class="py-16 bg-teal-50"> <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-12 text-teal-800">Lo que Dicen Nuestros Alumnos</h2>
+        <section id="comunidad" class="py-16 bg-teal-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4 text-teal-800">Conecta, Comparte, Crece en Comunidad</h2>
+                <p class="text-gray-700 text-center mb-10 max-w-3xl mx-auto text-balance">No estás solo en este viaje. Únete a un espacio de apoyo mutuo, donde podrás interactuar con otros participantes y con nuestros profesores.</p>
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-3 text-teal-700">Un Espacio para Ti</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start"><i class="fas fa-comments text-teal-500 mr-3 mt-1"></i><span>Participa en nuestro foro: comparte tus avances, resuelve dudas y celebra los logros de tus compañeros.</span></li>
+                            <li class="flex items-start"><i class="fas fa-calendar-check text-teal-500 mr-3 mt-1"></i><span>Accede a eventos virtuales exclusivos: Q&A con profesores, talleres temáticos y más.</span></li>
+                            <li class="flex items-start"><i class="fas fa-lightbulb text-teal-500 mr-3 mt-1"></i><span>Encuentra inspiración y motivación en las experiencias de otros adultos como tú.</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-xl">
+                        <h4 class="font-semibold text-lg mb-3 text-teal-800">Foro de la Comunidad (Simulación)</h4>
+                        <div class="space-y-4">
+                            <div class="border-b pb-3">
+                                <div class="flex items-center mb-1">
+                                    <img src="https://placehold.co/40x40/A5B4FC/374151?text=LM" alt="[Avatar de usuario]" class="w-8 h-8 rounded-full mr-2">
+                                    <span class="font-semibold text-sm text-teal-700">Laura M.</span>
+                                    <span class="text-xs text-gray-400 ml-auto">Hace 2 horas</span>
+                                </div>
+                                <p class="text-sm text-gray-600 text-balance">¡Feliz de haber completado mi primera clase de Introducción! Me sentí un poco torpe al principio, pero Ana es maravillosa explicando. ¿Algún consejo para los principiantes?</p>
+                                <button class="text-xs text-teal-600 hover:underline mt-1">Responder (3)</button>
+                            </div>
+                            <div>
+                                <div class="flex items-center mb-1">
+                                    <img src="https://placehold.co/40x40/818CF8/FFFFFF?text=CJ" alt="[Avatar de usuario]" class="w-8 h-8 rounded-full mr-2">
+                                    <span class="font-semibold text-sm text-teal-700">Carlos J.</span>
+                                    <span class="text-xs text-gray-400 ml-auto">Hace 5 horas</span>
+                                </div>
+                                <p class="text-sm text-gray-600 text-balance">¡Qué bien el taller de Acondicionamiento Consciente! Mis hombros lo agradecen. ¿Alguien más lo probó?</p>
+                                <button class="text-xs text-teal-600 hover:underline mt-1">Responder (1)</button>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-4 text-center">Esto es una simulación visual de nuestra comunidad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="progreso" class="py-12 bg-teal-600 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-2xl font-bold mb-3">Celebra Cada Paso de Tu Evolución</h3>
+                <p class="mb-4 max-w-xl mx-auto text-balance">En Relevé Online, valoramos tu dedicación. Próximamente, integraremos herramientas para que visualices tu progreso, establezcas metas y te mantengas motivado.</p>
+                <div class="flex justify-center items-center space-x-4 text-teal-100">
+                    <span><i class="fas fa-chart-line mr-1"></i> Visualiza tu Avance</span>
+                    <span><i class="fas fa-trophy mr-1"></i> Alcanza tus Metas</span>
+                    <span><i class="fas fa-shoe-prints mr-1"></i> Clases Progresivas</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonios" class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4 text-teal-800">Voces de Nuestra Comunidad</h2>
+                <p class="text-gray-700 text-center mb-10 max-w-2xl mx-auto text-balance">Descubre cómo Relevé Online está enriqueciendo la vida de adultos como tú.</p>
                 <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-teal-500"> <p class="text-gray-700 italic mb-4">"Nunca pensé que podría aprender ballet siendo adulta y con mi horario. Relevé Online lo hizo posible. ¡Las clases grabadas son mi salvación!"</p>
-                        <p class="font-semibold text-teal-900">- Laura G.</p>
-                        <p class="text-sm text-gray-500">Profesional Ocupada</p>
+                    <div class="bg-teal-50 p-6 rounded-lg shadow-sm border-l-4 border-teal-500">
+                        <div class="flex mb-2">
+                            <i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <p class="text-gray-700 italic mb-4 text-balance">"Retomar la danza después de tantos años parecía un sueño lejano. Gracias a la flexibilidad de las clases grabadas y la paciencia de los profesores, he redescubierto una pasión. ¡Me siento más ágil y con más energía!"</p>
+                        <p class="font-semibold text-teal-900">- Sofía R.</p>
+                        <p class="text-sm text-gray-500">Consultora, 45 años</p>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-teal-500"> <p class="text-gray-700 italic mb-4">"La calidad de los profesores es excepcional. Siento que realmente se preocupan por mi progreso, incluso online. Y la comunidad es muy motivadora."</p>
-                        <p class="font-semibold text-teal-900">- Carlos M.</p>
-                        <p class="text-sm text-gray-500">Buscando Bienestar</p>
+                    <div class="bg-teal-50 p-6 rounded-lg shadow-sm border-l-4 border-teal-500">
+                        <div class="flex mb-2">
+                             <i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="far fa-star text-yellow-400"></i>
+                        </div>
+                        <p class="text-gray-700 italic mb-4 text-balance">"Siempre quise aprender ballet, pero me intimidaban las escuelas tradicionales. Aquí encontré un ambiente acogedor y profesores que realmente entienden las necesidades del cuerpo adulto. La comunidad online también es un gran plus."</p>
+                        <p class="font-semibold text-teal-900">- Marco V.</p>
+                        <p class="text-sm text-gray-500">Diseñador Gráfico, 38 años</p>
                     </div>
+                </div>
+                <div class="text-center mt-8">
+                     <p class="text-gray-600">Calificación Promedio de la Comunidad: <span class="font-bold text-teal-600">4.9 / 5 estrellas</span></p>
                 </div>
             </div>
         </section>
 
         <section id="precios" class="py-16 bg-slate-100">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold mb-4 text-teal-800">Elige el Plan Perfecto para Ti</h2>
-                <p class="text-gray-600 mb-10 max-w-xl mx-auto">Acceso ilimitado a clases grabadas, clases en vivo y nuestra comunidad con una suscripción flexible.</p>
-                <div class="max-w-md mx-auto bg-white rounded-lg shadow-xl p-8 border border-teal-200">
-                     <h3 class="text-2xl font-semibold mb-2 text-teal-900">Plan Mensual Relevé</h3>
-                     <p class="text-4xl font-bold text-teal-600 mb-4">$XX.XX <span class="text-lg font-normal text-gray-500">/ mes</span></p>
-                     <ul class="text-left space-y-2 text-gray-700 mb-6">
-                         <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Acceso ilimitado a clases grabadas</li>
-                         <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> X clases en vivo al mes</li>
-                         <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Acceso a la comunidad online</li>
-                         <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Talleres y eventos exclusivos</li>
-                         <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Cancelación flexible</li>
+                <h2 class="text-3xl font-bold mb-4 text-teal-800">Invierte en Tu Bienestar y Pasión</h2>
+                <p class="text-gray-700 mb-10 max-w-2xl mx-auto text-balance">Nuestra suscripción mensual te da acceso completo a una experiencia de danza y bienestar diseñada para enriquecer tu vida.</p>
+                <div class="max-w-lg mx-auto bg-white rounded-lg shadow-xl p-8 border-2 border-teal-500"> <h3 class="text-2xl font-semibold mb-1 text-teal-900">Plan Integral Relevé</h3>
+                     <p class="text-sm text-teal-600 mb-3">Todo lo que necesitas para tu viaje en la danza</p>
+                     <p class="text-4xl font-bold text-teal-600 mb-1">$XX.XX <span class="text-lg font-normal text-gray-500">/ mes</span></p>
+                     <p class="text-xs text-gray-400 mb-6">(Prueba gratuita de 7 días, cancela cuando quieras)</p>
+                     <h4 class="font-semibold text-left mb-2 text-teal-700">¿Qué incluye tu acceso?</h4>
+                     <ul class="text-left space-y-2 text-gray-600 text-sm mb-6">
+                         <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Acceso ilimitado a <strong class="font-medium">toda la videoteca</strong> de clases pregrabadas (todos los niveles).</li>
+                         <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Participación en <strong class="font-medium">clases en vivo</strong> programadas cada semana.</li>
+                         <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Contenido exclusivo de <strong class="font-medium">Bienestar Integral</strong> (nutrición, mente, cuidado corporal).</li>
+                         <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Acceso al <strong class="font-medium">Glosario de Ballet</strong> y materiales de apoyo.</li>
+                         <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Ingreso a la <strong class="font-medium">Comunidad Virtual</strong> (foros y eventos).</li>
+                         <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> <em class="text-xs">(Próximamente) Herramientas de seguimiento de progreso.</em></li>
                      </ul>
                      <a href="#registro" class="w-full block bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-6 rounded-full text-lg cta-button">
-                        Comenzar Prueba Gratuita (7 días)
+                        Comenzar Mi Prueba Gratuita
                     </a>
                 </div>
-                 <p class="mt-6 text-sm text-gray-500">También ofrecemos clases sueltas y paquetes.</p>
+                 <p class="mt-8 text-sm text-gray-500 text-balance">Próximamente: Exploraremos opciones de planes con diferentes niveles de acceso para adaptarnos aún más a tus necesidades.</p>
             </div>
         </section>
 
-        <section id="clase-detalle-1" class="py-16 hidden"><div class="container mx-auto px-6">Detalle Clase 1</div></section>
-        <section id="clase-detalle-2" class="py-16 hidden"><div class="container mx-auto px-6">Detalle Clase 2</div></section>
-        <section id="clase-detalle-3" class="py-16 hidden"><div class="container mx-auto px-6">Detalle Clase 3</div></section>
-        <section id="todas-las-clases" class="py-16 hidden"><div class="container mx-auto px-6">Todas las Clases</div></section>
+        <section id="glosario" class="py-16 bg-white hidden"> <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4 text-teal-800">Glosario Básico de Ballet</h2>
+                <p class="text-gray-700 text-center mb-10 max-w-2xl mx-auto text-balance">Familiarízate con algunos términos esenciales de la danza clásica. Este es un recurso en crecimiento.</p>
+                <div class="max-w-2xl mx-auto bg-teal-50 p-6 rounded-lg shadow">
+                    <dl class="space-y-4">
+                        <div>
+                            <dt class="font-semibold text-teal-700">Plié (pli-EY)</dt>
+                            <dd class="text-sm text-gray-600 ml-4">Flexión de las rodillas. Es un movimiento fundamental en casi todos los pasos de ballet.</dd>
+                        </div>
+                        <div>
+                            <dt class="font-semibold text-teal-700">Tendu (tan-DIU)</dt>
+                            <dd class="text-sm text-gray-600 ml-4">Estiramiento del pie y la pierna. El pie se desliza por el suelo hasta quedar completamente estirado, apuntando.</dd>
+                        </div>
+                        <div>
+                            <dt class="font-semibold text-teal-700">Relevé (ruh-leh-VEY)</dt>
+                            <dd class="text-sm text-gray-600 ml-4">Elevación. Subir sobre las puntas o medias puntas de los pies.</dd>
+                        </div>
+                         <div>
+                            <dt class="font-semibold text-teal-700">Port de bras (por duh BRAH)</dt>
+                            <dd class="text-sm text-gray-600 ml-4">Movimiento o carruaje de los brazos. Se refiere a la forma elegante y coordinada de mover los brazos a través de diferentes posiciones.</dd>
+                        </div>
+                    </dl>
+                    <p class="text-xs text-gray-500 mt-6 text-center">Este glosario se expandirá con más términos y explicaciones visuales.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="clase-detalle-1" class="py-16 hidden"><div class="container mx-auto px-6">Detalle Clase 1: Introducción al Ballet Clásico</div></section>
+        <section id="clase-detalle-2" class="py-16 hidden"><div class="container mx-auto px-6">Detalle Clase 2: Técnica de Barra Intermedia</div></section>
+        <section id="clase-detalle-3" class="py-16 hidden"><div class="container mx-auto px-6">Detalle Clase 3: Acondicionamiento Consciente</div></section>
+        <section id="todas-las-clases" class="py-16 hidden"><div class="container mx-auto px-6">Catálogo Completo de Clases</div></section>
         <section id="login" class="py-16 hidden"><div class="container mx-auto px-6">Iniciar Sesión</div></section>
         <section id="registro" class="py-16 hidden"><div class="container mx-auto px-6">Registro / Prueba Gratis</div></section>
         <section id="privacidad" class="py-16 hidden"><div class="container mx-auto px-6">Política de Privacidad</div></section>
@@ -358,17 +475,36 @@
 
     </main>
 
-    <footer class="footer bg-gray-800 text-gray-300 py-6 mt-auto">
-        <div class="container mx-auto px-6 text-center md:flex md:justify-between items-center">
-            <p class="text-sm mb-4 md:mb-0">© 2025 Centro Relevé Online. Todos los derechos reservados.</p>
-            <div class="flex justify-center space-x-4 mb-4 md:mb-0">
-                <a href="#" class="hover:text-white" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="hover:text-white" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="hover:text-white" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+    <footer class="footer bg-gray-800 text-gray-300 py-8 mt-auto"> <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h5 class="font-semibold text-lg mb-3 text-white">Centro Relevé Online</h5>
+                    <p class="text-sm text-balance">Tu espacio para conectar con la danza clásica, mejorar tu bienestar y crecer a tu propio ritmo.</p>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-lg mb-3 text-white">Enlaces Rápidos</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#inicio" class="hover:text-teal-300">Inicio</a></li>
+                        <li><a href="#clases" class="hover:text-teal-300">Todas las Clases</a></li>
+                        <li><a href="#precios" class="hover:text-teal-300">Planes y Suscripción</a></li>
+                        <li><a href="#glosario" class="hover:text-teal-300">Glosario de Ballet</a></li> </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold text-lg mb-3 text-white">Conecta con Nosotros</h5>
+                    <div class="flex justify-center md:justify-start space-x-4 mb-3">
+                        <a href="#" class="hover:text-teal-300" aria-label="Facebook"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="hover:text-teal-300" aria-label="Instagram"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="hover:text-teal-300" aria-label="Youtube"><i class="fab fa-youtube text-xl"></i></a>
+                    </div>
+                    <p class="text-sm"><a href="mailto:info@releveonline.com" class="hover:text-teal-300">info@releveonline.com</a></p>
+                </div>
             </div>
-             <div class="text-sm">
-                <a href="#privacidad" class="hover:text-white">Política de Privacidad</a> |
-                <a href="#terminos" class="hover:text-white">Términos de Servicio</a>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-sm text-center md:flex md:justify-between">
+                <p class="mb-2 md:mb-0">&copy; 2025 Centro Relevé Online. Todos los derechos reservados.</p>
+                <div>
+                    <a href="#privacidad" class="hover:text-teal-300">Política de Privacidad</a> |
+                    <a href="#terminos" class="hover:text-teal-300">Términos de Servicio</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -381,7 +517,6 @@
 
         mobileMenuButton.addEventListener('click', () => {
             const isHidden = mobileMenu.classList.toggle('hidden');
-            // Cambiar icono y aria-label
             if (isHidden) {
                 menuIcon.classList.remove('fa-times');
                 menuIcon.classList.add('fa-bars');
@@ -391,32 +526,26 @@
                 menuIcon.classList.remove('fa-bars');
                 menuIcon.classList.add('fa-times');
                 mobileMenuButton.setAttribute('aria-label', 'Cerrar menú');
-                 mobileMenuButton.setAttribute('aria-expanded', 'true');
+                mobileMenuButton.setAttribute('aria-expanded', 'true');
             }
         });
 
-        // --- Script para filtros de clases (simulación básica) ---
+        // --- Script para filtros de clases ---
         const filterButtons = document.querySelectorAll('.filter-button');
         const classCards = document.querySelectorAll('.class-card');
-        const allFilterButton = document.querySelector('.filter-button[data-filter="all"]'); // Botón "Todas"
+        const allFilterButton = document.querySelector('.filter-button[data-filter="all"]');
 
-        // Activar filtro "Todas" por defecto
         if(allFilterButton) {
             allFilterButton.classList.add('active');
         }
 
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Actualizar botón activo
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-
                 const filter = button.getAttribute('data-filter');
-
-                // Mostrar/ocultar tarjetas
                 classCards.forEach(card => {
                     const category = card.getAttribute('data-category');
-                    // Usar flex en lugar de block para mantener el layout del grid
                     if (filter === 'all' || (category && category.includes(filter))) {
                         card.style.display = 'flex';
                     } else {
@@ -426,23 +555,19 @@
             });
         });
 
-        // --- Script para smooth scroll y actualizar nav activa (REVISADO) ---
-        const navLinks = document.querySelectorAll('#desktop-nav .nav-link'); // Solo links del nav principal
-
-        // Función para actualizar el link activo basado en scroll (Intersection Observer)
+        // --- Script para smooth scroll y actualizar nav activa ---
+        const navLinks = document.querySelectorAll('#desktop-nav .nav-link');
         const observerOptions = {
-            root: null, // viewport
-            rootMargin: '-20% 0px -60% 0px', // Ajustar márgenes para activar antes/después
-            threshold: 0 // Se activa apenas entra/sale del margen
+            root: null,
+            rootMargin: '-25% 0px -60% 0px', // Ajustado para mejor detección
+            threshold: 0
         };
 
         const observerCallback = (entries) => {
             entries.forEach(entry => {
                 const id = entry.target.getAttribute('id');
                 const navLink = document.querySelector(`#desktop-nav .nav-link[href="#${id}"]`);
-
                 if (entry.isIntersecting && navLink) {
-                    // Quitar activo de todos los links antes de añadir al actual
                     navLinks.forEach(link => link.classList.remove('active-page'));
                     navLink.classList.add('active-page');
                 }
@@ -450,39 +575,34 @@
         };
 
         const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-        // Observar todas las secciones principales con ID (excluyendo las ocultas)
-        document.querySelectorAll('section[id]:not(.hidden)').forEach((sec) => {
+        document.querySelectorAll('main section[id]:not(.hidden)').forEach((sec) => { // Solo observar secciones visibles en main
              observer.observe(sec);
         });
-
 
         // Cerrar menú móvil al hacer clic en un enlace dentro de él
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                  if (!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
-                    // Resetear icono
                     menuIcon.classList.remove('fa-times');
                     menuIcon.classList.add('fa-bars');
                     mobileMenuButton.setAttribute('aria-label', 'Abrir menú');
                     mobileMenuButton.setAttribute('aria-expanded', 'false');
                 }
-                // Opcional: Actualizar link activo en desktop nav si corresponde (ya lo hace el observer)
-                // const targetId = link.getAttribute('href');
-                // const desktopLink = document.querySelector(`.nav-link[href="${targetId}"]`);
-                // if (desktopLink) {
-                //    navLinks.forEach(l => l.classList.remove('active-page'));
-                //    desktopLink.classList.add('active-page');
-                // }
             });
         });
 
          // Activar el enlace 'Inicio' al cargar la página inicialmente
          const homeLink = document.querySelector('#desktop-nav .nav-link[href="#inicio"]');
-         if (homeLink && window.scrollY < 200) { // Solo si estamos cerca del top
+         if (homeLink && (window.scrollY < 100 || window.location.hash === '' || window.location.hash === '#inicio')) {
              navLinks.forEach(link => link.classList.remove('active-page'));
              homeLink.classList.add('active-page');
+         }
+
+         // Mostrar sección Glosario si se accede por hash
+         if(window.location.hash === '#glosario') {
+            const glosarioSection = document.getElementById('glosario');
+            if(glosarioSection) glosarioSection.classList.remove('hidden');
          }
 
 
